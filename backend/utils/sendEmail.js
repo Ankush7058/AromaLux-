@@ -1,22 +1,29 @@
 const nodemailer = require("nodemailer");
 
 const sendEmail = async (options) => {
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  });
+  try {
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true,
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
 
-  const mailOptions = {
-    from: `"AromaLux" <${process.env.EMAIL_USER}>`,
-    to: options.email,
-    subject: options.subject,
-    html: options.message,
-  };
+    await transporter.sendMail({
+      from: `"AromaLux" <${process.env.EMAIL_USER}>`,
+      to: options.email,
+      subject: options.subject,
+      html: options.message,
+    });
 
-  await transporter.sendMail(mailOptions);
+    console.log("EMAIL SENT SUCCESSFULLY");
+  } catch (error) {
+    console.log("EMAIL ERROR:", error.message);
+    throw error;
+  }
 };
 
 module.exports = sendEmail;
