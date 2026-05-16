@@ -17,8 +17,14 @@ const product = await Product.create({
       product,
     });
   } catch (error) {
-    res.status(500).json({ message: "Create product failed", error: error.message });
-  }
+  console.log("CREATE PRODUCT ERROR:", error);
+  console.log("ERROR MESSAGE:", error.message);
+
+  res.status(500).json({
+    message: "Create product failed",
+    error: error.message,
+  });
+}
 };
 
 exports.getProducts = async (req, res) => {
