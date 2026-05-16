@@ -1,29 +1,14 @@
-const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendEmail = async (options) => {
-  try {
-    const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 465,
-      secure: true,
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
-    await transporter.sendMail({
-      from: `"AromaLux" <${process.env.EMAIL_USER}>`,
-      to: options.email,
-      subject: options.subject,
-      html: options.message,
-    });
-
-    console.log("EMAIL SENT SUCCESSFULLY");
-  } catch (error) {
-    console.log("EMAIL ERROR:", error.message);
-    throw error;
-  }
+  await resend.emails.send({
+    from: "AromaLux <onboarding@resend.dev>",
+    to: options.email,
+    subject: options.subject,
+    html: options.message,
+  });
 };
 
 module.exports = sendEmail;
