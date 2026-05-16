@@ -8,10 +8,12 @@ cloudinary.config({
 });
 
 const storage = new CloudinaryStorage({
-  cloudinary,
-  params: {
-    folder: "perfume-ecommerce",
-    allowed_formats: ["jpg", "jpeg", "png", "webp"],
+  cloudinary: cloudinary,
+  params: async (req, file) => {
+    return {
+      folder: "perfume-ecommerce",
+      allowed_formats: ["jpg", "jpeg", "png", "webp"],
+    };
   },
 });
 
