@@ -1,30 +1,32 @@
 const Product = require("../models/Product");
-
 exports.createProduct = async (req, res) => {
   try {
- const uploadedImages = req.files
-  ? req.files.map((file) => file.path)
-  : [];
+    console.log("BODY:", JSON.stringify(req.body, null, 2));
+    console.log("FILES:", JSON.stringify(req.files, null, 2));
 
-const product = await Product.create({
-  ...req.body,
-  image: uploadedImages[0] || req.body.image,
-  images: uploadedImages,
-});
+    const uploadedImages = req.files
+      ? req.files.map((file) => file.path)
+      : [];
+
+    const product = await Product.create({
+      ...req.body,
+      image: uploadedImages[0] || req.body.image,
+      images: uploadedImages,
+    });
 
     res.status(201).json({
       message: "Product created successfully",
       product,
     });
   } catch (error) {
-  console.log("CREATE PRODUCT ERROR:", error);
-  console.log("ERROR MESSAGE:", error.message);
+    console.log("CREATE PRODUCT ERROR FULL:");
+    console.log(JSON.stringify(error, Object.getOwnPropertyNames(error), 2));
 
-  res.status(500).json({
-    message: "Create product failed",
-    error: error.message,
-  });
-}
+    res.status(500).json({
+      message: "Create product failed",
+      error: error.message,
+    });
+  }
 };
 
 exports.getProducts = async (req, res) => {
