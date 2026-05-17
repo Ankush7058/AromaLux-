@@ -329,38 +329,37 @@ const Home = () => {
           </div>
         </div>
       </section>
-      {/* Luxury Banner */}
-      <section className="px-6 md:px-12 py-12">
-        <div className="rounded-[40px] overflow-hidden relative">
-          <img
-            src="https://www.isakfragrances.com/cdn/shop/articles/Gemini_Generated_Image_evzjo4evzjo4evzj.png?v=1776150776&width=2730"
-            alt="Luxury"
-            className="w-full h-[500px] object-cover"
-          />
+    {/* Luxury Banner */}
+<section className="px-4 sm:px-6 md:px-12 py-8 md:py-12">
+  <div className="rounded-[28px] md:rounded-[40px] overflow-hidden relative min-h-[430px] md:min-h-[500px]">
+    <img
+      src="https://www.isakfragrances.com/cdn/shop/articles/Gemini_Generated_Image_evzjo4evzjo4evzj.png?v=1776150776&width=2730"
+      alt="Luxury"
+      className="absolute inset-0 w-full h-full object-cover"
+    />
 
-          <div className="absolute inset-0 bg-black/60 flex items-center">
-            <div className="px-10 md:px-20 max-w-2xl text-white">
-              <p className="text-[#c9a24d] font-bold uppercase tracking-[0.3em]">
-                Luxury Collection
-              </p>
+    <div className="absolute inset-0 bg-black/60 flex items-center">
+      <div className="px-6 sm:px-8 md:px-20 max-w-2xl text-white">
+        <p className="text-[#c9a24d] font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] text-xs md:text-base">
+          Luxury Collection
+        </p>
 
-              <h2 className="text-5xl md:text-6xl font-extrabold leading-tight mt-5">
-                Crafted For Elegance & Presence
-              </h2>
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mt-4 md:mt-5">
+          Crafted For Elegance & Presence
+        </h2>
 
-              <p className="text-lg text-gray-200 mt-6 leading-relaxed">
-                Experience premium fragrances designed to leave a lasting
-                impression wherever you go.
-              </p>
+        <p className="text-sm sm:text-base md:text-lg text-gray-200 mt-5 md:mt-6 leading-relaxed max-w-md">
+          Experience premium fragrances designed to leave a lasting impression
+          wherever you go.
+        </p>
 
-              <button className="mt-8 bg-[#c9a24d] text-black px-8 py-4 rounded-full font-extrabold hover:bg-white transition">
-                Explore Collection
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
+        <button className="mt-7 md:mt-8 bg-[#c9a24d] text-black px-7 md:px-8 py-3 md:py-4 rounded-full font-extrabold hover:bg-white transition">
+          Explore Collection
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
       {/* Why Choose Us */}
       <section className="px-6 md:px-12 py-20">
         <div className="text-center mb-14">
